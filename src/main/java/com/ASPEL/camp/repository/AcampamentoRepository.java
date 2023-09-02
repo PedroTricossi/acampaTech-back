@@ -1,6 +1,7 @@
 package com.ASPEL.camp.repository;
 
 import com.ASPEL.camp.model.Acampamento;
+import jakarta.persistence.Table;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

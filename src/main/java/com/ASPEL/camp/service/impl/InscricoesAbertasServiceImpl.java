@@ -13,7 +13,6 @@ import java.util.List;
 public class InscricoesAbertasServiceImpl implements InscricoesAbertasService {
     @Autowired
     InscricoesAbertasRepository inscricoesAbertasRepository;
-
     @Override
     public InscricoesAbertas save(InscricoesAbertas inscricoesAbertas) {
         return inscricoesAbertasRepository.save(inscricoesAbertas);
