@@ -2,7 +2,6 @@ package com.ASPEL.camp.controller;
 
 import com.ASPEL.camp.model.Campista;
 import com.ASPEL.camp.service.impl.CampistaServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +12,13 @@ import java.util.List;
 @RequestMapping("api/v1/camp/campista")
 @CrossOrigin
 public class CampistaController {
-    @Autowired
-    CampistaServiceImpl campistaService;
+
+    private final CampistaServiceImpl campistaService;
+
+    public CampistaController(CampistaServiceImpl campistaService) {
+        this.campistaService = campistaService;
+    }
+
     @GetMapping
     public ResponseEntity<List<Campista>> findAllCampistas(){
         return ResponseEntity.status(HttpStatus.OK).body(campistaService.findAll());

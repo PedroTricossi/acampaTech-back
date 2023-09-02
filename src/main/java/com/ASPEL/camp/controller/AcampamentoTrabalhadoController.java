@@ -2,7 +2,6 @@ package com.ASPEL.camp.controller;
 
 import com.ASPEL.camp.model.AcampamentoTrabalhado;
 import com.ASPEL.camp.service.impl.AcampamentoTrabalhadoServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +12,12 @@ import java.util.List;
 @RequestMapping("api/v1/camp/acampamentoTrabalhado")
 @CrossOrigin
 public class AcampamentoTrabalhadoController {
-    @Autowired
-    AcampamentoTrabalhadoServiceImpl acampamentoTrabalhadoService;
+
+    private final AcampamentoTrabalhadoServiceImpl acampamentoTrabalhadoService;
+
+    public AcampamentoTrabalhadoController(AcampamentoTrabalhadoServiceImpl acampamentoTrabalhadoService) {
+        this.acampamentoTrabalhadoService = acampamentoTrabalhadoService;
+    }
 
     @PostMapping
     public ResponseEntity<AcampamentoTrabalhado> saveAcampamentoTrabalhado(@RequestBody AcampamentoTrabalhado acampamento){
