@@ -27,7 +27,6 @@ public class CampistaServiceImpl implements CampistaService {
         return campistaRepository.findCampistasIncritosByAcampamentoId(acampamentoId);
     }
 
-
     @Override
     @Transactional(readOnly = true)
     public List<Campista> findAll() {

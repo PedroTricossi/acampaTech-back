@@ -9,5 +9,4 @@ public interface CampistaService {
     Campista findById(long id);
     Campista save(Campista campista);
     List<Campista> findCampistasInscritosByAcampamentoId(Long acampamentoId);
-
 }
