@@ -14,4 +14,6 @@ public interface InscricaoService {
     Inscricao findInscricaoByCampistaId(Long id);
 
     Inscricao updateInscricao(Long id, Inscricao inscricao);
+
+    void deleteInscricaoByAcampamentoId(Long acampamentoId);
 }

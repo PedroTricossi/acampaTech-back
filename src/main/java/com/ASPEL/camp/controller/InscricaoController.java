@@ -38,4 +38,10 @@ public class InscricaoController {
     public ResponseEntity<Inscricao> updateInscricao(@PathVariable Long id,@RequestBody Inscricao inscricao){
         return ResponseEntity.status(HttpStatus.OK).body(inscricaoService.updateInscricao(id, inscricao));
     }
+
+    @DeleteMapping("/acampamento/{id}")
+    public ResponseEntity<?> deleteInscricao(@PathVariable Long id){
+        inscricaoService.deleteInscricaoByAcampamentoId(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }

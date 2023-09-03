@@ -29,6 +29,7 @@ public class InscricaoServiceImpl implements InscricaoService {
     }
 
     @Override
+    @Transactional
     public Inscricao save(Inscricao inscricao) {
         Inscricao inscrito = inscricaoRepository.findByCampistaId(inscricao.getCampistaId());
 
@@ -39,11 +40,13 @@ public class InscricaoServiceImpl implements InscricaoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Inscricao findInscricaoByCampistaId(Long id) {
         return inscricaoRepository.findByCampistaId(id);
     }
 
     @Override
+    @Transactional
     public Inscricao updateInscricao(Long id, Inscricao inscricao) {
         return inscricaoRepository.findById(id).map( inscrito -> {
             System.out.println("Entrou");
@@ -57,5 +60,11 @@ public class InscricaoServiceImpl implements InscricaoService {
             System.out.println("Nao deveria estar aqui");
             return inscricaoRepository.save(inscricao);
         });
+    }
+
+    @Override
+    @Transactional
+    public void deleteInscricaoByAcampamentoId(Long acampamentoId) {
+        inscricaoRepository.deleteByAcampamentoId(acampamentoId);
     }
 }

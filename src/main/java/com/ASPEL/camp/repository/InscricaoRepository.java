@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InscricaoRepository extends JpaRepository<Inscricao, Long>{
-
     public Inscricao findByCampistaId(Long campistaId);
     public Inscricao findByAcampamentoIdAndCampistaId(Long acampamentoId, Long campistaId);
+
+    public void deleteByAcampamentoId(Long acampamentoId);
 }
