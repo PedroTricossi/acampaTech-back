@@ -28,4 +28,9 @@ public class InscricaoController {
     public ResponseEntity<List<Inscricao>> findAllIncricoes(){
         return ResponseEntity.status(HttpStatus.OK).body(inscricaoService.findAll());
     }
+
+    @GetMapping("/campista/{id}")
+    public ResponseEntity<Inscricao> findInscricaoByCampistaId(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(inscricaoService.findInscricaoByCampistaId(id));
+    }
 }

@@ -10,7 +10,6 @@ import java.util.List;
 
 @Service
 public class InscricaoServiceImpl implements InscricaoService {
-
     private final InscricaoRepository inscricaoRepository;
 
     public InscricaoServiceImpl(InscricaoRepository inscricaoRepository) {
@@ -31,6 +30,16 @@ public class InscricaoServiceImpl implements InscricaoService {
 
     @Override
     public Inscricao save(Inscricao inscricao) {
-        return inscricaoRepository.save(inscricao);
+        Inscricao inscrito = inscricaoRepository.findByCampistaId(inscricao.getCampistaId());
+
+        if(inscrito == null)
+            return inscricaoRepository.save(inscricao);
+
+        return inscrito;
+    }
+
+    @Override
+    public Inscricao findInscricaoByCampistaId(Long id) {
+        return inscricaoRepository.findByCampistaId(id);
     }
 }
