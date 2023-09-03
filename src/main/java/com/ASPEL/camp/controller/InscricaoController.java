@@ -33,4 +33,9 @@ public class InscricaoController {
     public ResponseEntity<Inscricao> findInscricaoByCampistaId(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(inscricaoService.findInscricaoByCampistaId(id));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Inscricao> updateInscricao(@PathVariable Long id,@RequestBody Inscricao inscricao){
+        return ResponseEntity.status(HttpStatus.OK).body(inscricaoService.updateInscricao(id, inscricao));
+    }
 }

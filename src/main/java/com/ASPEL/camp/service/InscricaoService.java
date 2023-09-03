@@ -12,4 +12,6 @@ public interface InscricaoService {
     Inscricao save(Inscricao inscricao);
 
     Inscricao findInscricaoByCampistaId(Long id);
+
+    Inscricao updateInscricao(Long id, Inscricao inscricao);
 }

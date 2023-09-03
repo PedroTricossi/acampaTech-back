@@ -42,4 +42,20 @@ public class InscricaoServiceImpl implements InscricaoService {
     public Inscricao findInscricaoByCampistaId(Long id) {
         return inscricaoRepository.findByCampistaId(id);
     }
+
+    @Override
+    public Inscricao updateInscricao(Long id, Inscricao inscricao) {
+        return inscricaoRepository.findById(id).map( inscrito -> {
+            System.out.println("Entrou");
+            inscrito.setCampistaId(inscricao.getCampistaId());
+            inscrito.setAcampamentoId(inscricao.getAcampamentoId());
+            inscrito.setEquipePreferencia(inscricao.getEquipePreferencia());
+            inscrito.setEquipeEscolhida(inscricao.getEquipeEscolhida());
+            inscrito.setFamiliaresAcampamento(inscricao.getFamiliaresAcampamento());
+            return inscricaoRepository.save(inscrito);
+        }).orElseGet( () -> {
+            System.out.println("Nao deveria estar aqui");
+            return inscricaoRepository.save(inscricao);
+        });
+    }
 }
