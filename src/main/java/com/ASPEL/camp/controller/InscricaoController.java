@@ -1,6 +1,6 @@
 package com.ASPEL.camp.controller;
 
-import com.ASPEL.camp.model.Inscricao;
+import com.ASPEL.camp.model.FormularioInscricao;
 import com.ASPEL.camp.service.impl.InscricaoServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/camp/inscricao")
+@RequestMapping("api/v1/inscricao")
 @CrossOrigin
 public class InscricaoController {
 
@@ -20,23 +20,23 @@ public class InscricaoController {
     }
 
     @PostMapping
-    public ResponseEntity<Inscricao> saveInscricao(@RequestBody Inscricao inscricao){
-        return ResponseEntity.status(HttpStatus.CREATED).body(inscricaoService.save(inscricao));
+    public ResponseEntity<FormularioInscricao> saveInscricao(@RequestBody FormularioInscricao formularioInscricao){
+        return ResponseEntity.status(HttpStatus.CREATED).body(inscricaoService.save(formularioInscricao));
     }
 
     @GetMapping
-    public ResponseEntity<List<Inscricao>> findAllIncricoes(){
+    public ResponseEntity<List<FormularioInscricao>> findAllIncricoes(){
         return ResponseEntity.status(HttpStatus.OK).body(inscricaoService.findAll());
     }
 
     @GetMapping("/campista/{id}")
-    public ResponseEntity<Inscricao> findInscricaoByCampistaId(@PathVariable Long id){
+    public ResponseEntity<FormularioInscricao> findInscricaoByCampistaId(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(inscricaoService.findInscricaoByCampistaId(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Inscricao> updateInscricao(@PathVariable Long id,@RequestBody Inscricao inscricao){
-        return ResponseEntity.status(HttpStatus.OK).body(inscricaoService.updateInscricao(id, inscricao));
+    public ResponseEntity<FormularioInscricao> updateInscricao(@PathVariable Long id, @RequestBody FormularioInscricao formularioInscricao){
+        return ResponseEntity.status(HttpStatus.OK).body(inscricaoService.updateInscricao(id, formularioInscricao));
     }
 
     @DeleteMapping("/acampamento/{id}")

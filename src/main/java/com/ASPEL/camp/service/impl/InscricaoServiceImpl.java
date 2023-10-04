@@ -1,6 +1,6 @@
 package com.ASPEL.camp.service.impl;
 
-import com.ASPEL.camp.model.Inscricao;
+import com.ASPEL.camp.model.FormularioInscricao;
 import com.ASPEL.camp.repository.InscricaoRepository;
 import com.ASPEL.camp.service.InscricaoService;
 import org.springframework.stereotype.Service;
@@ -18,47 +18,47 @@ public class InscricaoServiceImpl implements InscricaoService {
 
     @Override
     @Transactional(readOnly = true)
-    public Inscricao findInscricaoByCampistaAndAcampamentoId(Long acampamentoId, Long campistaId) {
+    public FormularioInscricao findInscricaoByCampistaAndAcampamentoId(Long acampamentoId, Long campistaId) {
         return inscricaoRepository.findByAcampamentoIdAndCampistaId(acampamentoId, campistaId);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<Inscricao> findAll() {
+    public List<FormularioInscricao> findAll() {
         return inscricaoRepository.findAll();
     }
 
     @Override
     @Transactional
-    public Inscricao save(Inscricao inscricao) {
-        Inscricao inscrito = inscricaoRepository.findByCampistaId(inscricao.getCampistaId());
+    public FormularioInscricao save(FormularioInscricao formularioInscricao) {
+        FormularioInscricao inscrito = inscricaoRepository.findByCampistaId(formularioInscricao.getCampistaId());
 
         if(inscrito == null)
-            return inscricaoRepository.save(inscricao);
+            return inscricaoRepository.save(formularioInscricao);
 
         return inscrito;
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Inscricao findInscricaoByCampistaId(Long id) {
+    public FormularioInscricao findInscricaoByCampistaId(Long id) {
         return inscricaoRepository.findByCampistaId(id);
     }
 
     @Override
     @Transactional
-    public Inscricao updateInscricao(Long id, Inscricao inscricao) {
+    public FormularioInscricao updateInscricao(Long id, FormularioInscricao formularioInscricao) {
         return inscricaoRepository.findById(id).map( inscrito -> {
             System.out.println("Entrou");
-            inscrito.setCampistaId(inscricao.getCampistaId());
-            inscrito.setAcampamentoId(inscricao.getAcampamentoId());
-            inscrito.setEquipePreferencia(inscricao.getEquipePreferencia());
-            inscrito.setEquipeEscolhida(inscricao.getEquipeEscolhida());
-            inscrito.setFamiliaresAcampamento(inscricao.getFamiliaresAcampamento());
+            inscrito.setCampistaId(formularioInscricao.getCampistaId());
+            inscrito.setAcampamentoId(formularioInscricao.getAcampamentoId());
+            inscrito.setEquipePreferencia(formularioInscricao.getEquipePreferencia());
+            inscrito.setEquipeEscolhida(formularioInscricao.getEquipeEscolhida());
+            inscrito.setFamiliaresAcampamento(formularioInscricao.getFamiliaresAcampamento());
             return inscricaoRepository.save(inscrito);
         }).orElseGet( () -> {
             System.out.println("Nao deveria estar aqui");
-            return inscricaoRepository.save(inscricao);
+            return inscricaoRepository.save(formularioInscricao);
         });
     }
 

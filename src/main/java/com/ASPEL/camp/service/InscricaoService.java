@@ -1,19 +1,19 @@
 package com.ASPEL.camp.service;
 
-import com.ASPEL.camp.model.Inscricao;
+import com.ASPEL.camp.model.FormularioInscricao;
 
 import java.util.List;
 
 public interface InscricaoService {
-    Inscricao findInscricaoByCampistaAndAcampamentoId(Long campistaId, Long acampamentoId);
+    FormularioInscricao findInscricaoByCampistaAndAcampamentoId(Long campistaId, Long acampamentoId);
 
-    List<Inscricao> findAll();
+    List<FormularioInscricao> findAll();
 
-    Inscricao save(Inscricao inscricao);
+    FormularioInscricao save(FormularioInscricao formularioInscricao);
 
-    Inscricao findInscricaoByCampistaId(Long id);
+    FormularioInscricao findInscricaoByCampistaId(Long id);
 
-    Inscricao updateInscricao(Long id, Inscricao inscricao);
+    FormularioInscricao updateInscricao(Long id, FormularioInscricao formularioInscricao);
 
     void deleteInscricaoByAcampamentoId(Long acampamentoId);
 }

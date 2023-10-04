@@ -1,12 +1,11 @@
 package com.ASPEL.camp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -19,4 +18,9 @@ public class Acampamento {
     private String tema;
     private Date dataInicio;
     private Date dataFim;
+    private Boolean inscricoesAbertas;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "acampamentos_pode_trabalhar", joinColumns = @JoinColumn(name = "acampamento_id"), inverseJoinColumns = @JoinColumn(name = "pode_trabalhar_id"))
+    private Set<Acampamento> acampamentosPodeTrabalhar = new HashSet<>();
 }

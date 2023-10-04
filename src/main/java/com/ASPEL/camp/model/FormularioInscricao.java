@@ -6,18 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-import java.sql.Date;
-
 @Data
 @Entity
-public class InscricoesAbertas {
+public class FormularioInscricao {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long Id;
-
+    private Long campistaId;
     private Long acampamentoId;
-
-    private Date dataInicio;
-
-    private Date dataFim;
+    private String equipePreferencia;
+    private String equipeEscolhida;
+    private String familiaresAcampamento;
 }

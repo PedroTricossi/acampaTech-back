@@ -1,5 +1,6 @@
 package com.ASPEL.camp.controller;
 
+import com.ASPEL.camp.dto.CampistaDto;
 import com.ASPEL.camp.model.Campista;
 import com.ASPEL.camp.service.impl.CampistaServiceImpl;
 import org.springframework.http.HttpStatus;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/camp/campista")
-@CrossOrigin
+@RequestMapping("api/v1/campista")
+@CrossOrigin(origins = "*")
 public class CampistaController {
 
     private final CampistaServiceImpl campistaService;
@@ -35,7 +36,7 @@ public class CampistaController {
     }
 
     @PostMapping
-    public ResponseEntity<Campista> savePerson(@RequestBody Campista campista){
+    public ResponseEntity<Campista> savePerson(@RequestBody CampistaDto campista){
         return ResponseEntity.status(HttpStatus.CREATED).body(campistaService.save(campista));
     }
 }
