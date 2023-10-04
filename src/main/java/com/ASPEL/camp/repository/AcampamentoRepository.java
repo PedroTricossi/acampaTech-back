@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 public interface AcampamentoRepository extends JpaRepository<Acampamento, Long> {
-    @Query(value = "SELECT * FROM public.acampamento WHERE data_inicio >= CURRENT_DATE AND data_inicio <= CURRENT_DATE + INTERVAL '3 MONTH';",
+    @Query(value = "SELECT * FROM public.acampamento WHERE data_inicio >= CURRENT_DATE AND data_inicio <= CURRENT_DATE + INTERVAL '6 MONTH';",
     nativeQuery = true)
     public List<Acampamento> findAcampamentoByCloseToNow();
 

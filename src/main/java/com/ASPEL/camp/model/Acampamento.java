@@ -1,6 +1,7 @@
 package com.ASPEL.camp.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.sql.Date;
@@ -9,10 +10,15 @@ import java.util.Set;
 
 @Data
 @Entity
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "nome")
+        })
 public class Acampamento {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long Id;
+    @NotBlank
     private String nome;
     private String edicao;
     private String tema;
