@@ -21,6 +21,7 @@ public class AcampamentoController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Acampamento> saveAcampamento(@RequestBody AcampamentoDto acampamento){
         return ResponseEntity.status(HttpStatus.CREATED).body(acampamentoService.save(acampamento));
     }
